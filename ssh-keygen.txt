@@ -1,0 +1,113 @@
+SSH login through SSH-key
+
+need to generate ssh-key
+
+
+Step 1
+-->ssh-keygen 
+
+output:
+[root@star .ssh]# ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):  ----> key generation path press enter
+/root/.ssh/id_rsa already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase):   ----->ssh-key password
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:k+4LLzVtikbhWEDwboYAu7lcxQWQHTHW0qlh6KSB7VU root@star.sixthstar.in
+The key's randomart image is:
++---[RSA 2048]----+
+|o..+*BE..        |
+|oo.===o+         |
+|o.=.o++          |
+| =.+..o  .       |
+|o ..++ .S.       |
+|...o. o.o.o      |
+|..   ..o.+       |
+|      ++.        |
+|     . .+.       |
++----[SHA256]-----+
+
+step 2
+-->cd /root/.ssh/
+
+-->ssh-copy-id -i ~/.ssh/id_rsa root@103.173.112.16
+
+then it ask 103.173.112.16 server root password
+enter root password
+ 
+output:
+[root@star .ssh]# ssh-copy-id -i ~/.ssh/id_rsa root@103.173.112.16
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/root/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@103.173.112.16's password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'root@103.173.112.16'"
+and check to make sure that only the key(s) you wanted were added.
+
+
+step 3:
+
+then after this next time we want to get ssh for that server means it ask only ssh-key password if you want to take ssh without asking password means while creatine ssh-keygen create as empty password.
+
+--> ssh root@103.173.112.16
+
+output:
+
+[root@star .ssh]# ssh root@103.173.112.16
+Enter passphrase for key '/root/.ssh/id_rsa':
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-29-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Fri 10 Nov 2023 08:22:00 AM CET
+
+  System load:  0.0               Processes:             124
+  Usage of /:   3.2% of 97.90GB   Users logged in:       1
+  Memory usage: 10%               IPv4 address for eth0: 103.173.112.16
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+New release '22.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+*** System restart required ***
+Last login: Fri Nov 10 08:14:24 2023 from 46.4.38.130
+root@srv20:~#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
